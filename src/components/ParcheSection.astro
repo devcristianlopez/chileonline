@@ -1,0 +1,79 @@
+---
+interface Props {
+  icon: string;
+  title: string;
+  variant?: 'default' | 'critical';
+}
+
+const { icon, title, variant = 'default' } = Astro.props;
+---
+
+<section class={`parche-section ${variant === 'critical' ? 'parche-section--critical' : ''}`}>
+  <div class="section-header">
+    <span class="section-icon">{icon}</span>
+    <h2 class="section-title">{title}</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="section-content">
+    <slot />
+  </div>
+</section>
+
+<style>
+  .parche-section {
+    margin-bottom: 2.5rem;
+    padding: 1.5rem;
+    background: var(--bg-card);
+    border-radius: 8px;
+    border: 1px solid var(--border-subtle);
+    transition: border-color 0.3s ease;
+  }
+
+  .parche-section:hover {
+    border-color: var(--border-gold);
+  }
+
+  .parche-section--critical {
+    border-color: rgba(239, 68, 68, 0.3);
+    background: linear-gradient(135deg, var(--bg-card) 0%, rgba(239, 68, 68, 0.05) 100%);
+  }
+
+  .parche-section--critical:hover {
+    border-color: rgba(239, 68, 68, 0.5);
+  }
+
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .section-icon {
+    font-size: 1.25rem;
+  }
+
+  .section-title {
+    font-family: var(--font-heading);
+    font-size: 1.1rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--gold);
+    white-space: nowrap;
+  }
+
+  .section-line {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--border-gold) 0%, transparent 100%);
+  }
+
+  .section-content {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+</style>

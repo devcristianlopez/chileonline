@@ -1,0 +1,43 @@
+---
+import { getCollection, render } from 'astro:content';
+import ParcheLayout from '../../layouts/ParcheLayout.astro';
+
+export async function getStaticPaths() {
+  const parches = await getCollection('parches');
+  const sorted = parches.sort((a, b) => b.data.week - a.data.week);
+
+  return sorted.map((parche, index) => ({
+    params: { id: parche.id },
+    props: {
+      parche,
+      versions: sorted.map((p, i) => ({
+        id: p.id,
+        version: p.data.version,
+        date: p.data.date.toLocaleDateString('es-CL', { day: 'numeric', month: 'short', year: 'numeric' }),
+        isLatest: i === 0,
+      })),
+    },
+  }));
+}
+
+const { parche, versions } = Astro.props;
+const { Content } = await render(parche);
+
+const formattedDate = parche.data.date.toLocaleDateString('es-CL', {
+  day: 'numeric',
+  month: 'long',
+  year: 'numeric',
+});
+---
+
+<ParcheLayout
+  title={`${parche.data.version} — ChileOnline`}
+  version={parche.data.version}
+  subtitle={parche.data.subtitle}
+  date={formattedDate}
+  status={parche.data.status}
+  versions={versions}
+  currentId={parche.id}
+>
+  <Content />
+</ParcheLayout>

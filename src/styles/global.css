@@ -1,0 +1,146 @@
+/* ============================================
+   CHILEONLINE — Global Styles
+   MMORPG Dark Theme
+   ============================================ */
+
+@import url('https://fonts.googleapis.com/css2?family=Rajdhani:wght@400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap');
+
+/* ---------- CSS Reset ---------- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  font-weight: 400;
+  line-height: 1.6;
+  color: var(--text-primary);
+  background-color: var(--bg-primary);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+a {
+  color: var(--cyan);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+a:hover {
+  color: var(--gold);
+}
+
+ul, ol {
+  list-style: none;
+}
+
+/* ---------- Design Tokens ---------- */
+:root {
+  --bg-primary: #0a0e1a;
+  --bg-secondary: #111827;
+  --bg-card: #1a1f2e;
+  --bg-card-hover: #1e293b;
+  --bg-sidebar: #0d1220;
+  --bg-header: #080c16;
+
+  --gold: #f0b429;
+  --gold-dim: #d4a017;
+  --gold-glow: rgba(240, 180, 41, 0.15);
+  --cyan: #06b6d4;
+  --cyan-dim: #0891b2;
+  --red: #ef4444;
+  --red-dim: #dc2626;
+  --green: #22c55e;
+  --green-dim: #16a34a;
+  --orange: #f97316;
+  --purple: #a855f7;
+  --purple-dim: #9333ea;
+  --pink: #ec4899;
+
+  --text-primary: #f1f5f9;
+  --text-secondary: #94a3b8;
+  --text-muted: #64748b;
+
+  --border-subtle: rgba(255, 255, 255, 0.06);
+  --border-gold: rgba(240, 180, 41, 0.3);
+
+  --sidebar-width: 280px;
+  --header-height: 80px;
+  --content-max-width: 860px;
+
+  --font-heading: 'Rajdhani', sans-serif;
+  --font-body: 'Inter', sans-serif;
+
+  --shadow-card: 0 2px 8px rgba(0, 0, 0, 0.3);
+  --shadow-glow-gold: 0 0 20px rgba(240, 180, 41, 0.1);
+  --shadow-glow-cyan: 0 0 15px rgba(6, 182, 212, 0.1);
+}
+
+/* ---------- Typography ---------- */
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-heading);
+  font-weight: 700;
+  line-height: 1.2;
+  color: var(--text-primary);
+}
+
+h1 { font-size: 2.5rem; }
+h2 { font-size: 1.75rem; }
+h3 { font-size: 1.35rem; }
+h4 { font-size: 1.1rem; }
+
+p {
+  margin-bottom: 0.75rem;
+  color: var(--text-secondary);
+}
+
+strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* ---------- Scrollbar ---------- */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-card);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--bg-card-hover);
+}
+
+::selection {
+  background: var(--gold);
+  color: var(--bg-primary);
+}
+
+.container {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 1.5rem;
+}
