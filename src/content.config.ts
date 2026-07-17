@@ -3,7 +3,7 @@ import { glob } from 'astro/loaders';
 import { z } from 'astro/zod';
 
 const parches = defineCollection({
-  loader: glob({ pattern: '**/*.md', base: './patchs' }),
+  loader: glob({ pattern: '**/[!F]*.md', base: './patchs' }),
   schema: z.object({
     version: z.string(),
     season: z.number(),
